@@ -24,6 +24,11 @@ function ehExpressaoValida(expr) {
     return false;
   }
 
+  // Proibir operadores consecutivos
+  if (/[+\-*/]{2}/.test(expressaoSemEspacos)) {
+    return false;
+  }
+
   return true;
 }
 

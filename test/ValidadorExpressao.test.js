@@ -48,3 +48,21 @@ describe("Ciclo 2 — expressões simples com operadores", () => {
     expect(ehExpressaoValida("5*")).toBe(false);
   });
 });
+
+describe("Ciclo 3 — proibir operadores duplicados e casos triviais inválidos", () => {
+  test("rejeita operadores duplicados sem espaço", () => {
+    expect(ehExpressaoValida("1++2")).toBe(false);
+  });
+
+  test("rejeita operadores duplicados mesmo com espaços entre eles", () => {
+    expect(ehExpressaoValida("3/ * 2")).toBe(false); // deve falhar por '/ *'
+  });
+
+  test("rejeita operadores diferentes consecutivos no meio da expressão", () => {
+    expect(ehExpressaoValida("4+-5")).toBe(false);
+  });
+
+  test("rejeita operadores diferentes consecutivos com espaço antes e depois dos operadores", () => {
+    expect(ehExpressaoValida("10 *    / 2")).toBe(false);
+  });
+});
