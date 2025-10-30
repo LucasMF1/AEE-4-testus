@@ -24,3 +24,27 @@ describe("Ciclo 1 — apenas números inteiros positivos e espaços", () => {
     expect(ehExpressaoValida("(")).toBe(false);
   });
 });
+
+describe("Ciclo 2 — expressões simples com operadores", () => {
+  test("aceita expressão simples com um operador", () => {
+    expect(ehExpressaoValida("1+2")).toBe(true);
+    expect(ehExpressaoValida("5-3")).toBe(true);
+    expect(ehExpressaoValida("2*4")).toBe(true);
+    expect(ehExpressaoValida("8/2")).toBe(true);
+  });
+
+  test("aceita expressão com espaços ao redor do operador", () => {
+    expect(ehExpressaoValida("1 + 2")).toBe(true);
+    expect(ehExpressaoValida("10 - 5")).toBe(true);
+  });
+
+  test("rejeita expressão que começa com operador", () => {
+    expect(ehExpressaoValida("+1")).toBe(false);
+    expect(ehExpressaoValida("-5")).toBe(false);
+  });
+
+  test("rejeita expressão que termina com operador", () => {
+    expect(ehExpressaoValida("1+")).toBe(false);
+    expect(ehExpressaoValida("5*")).toBe(false);
+  });
+});
