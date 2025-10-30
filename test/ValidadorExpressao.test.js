@@ -65,4 +65,27 @@ describe("Ciclo 3 — proibir operadores duplicados e casos triviais inválidos"
   test("rejeita operadores diferentes consecutivos com espaço antes e depois dos operadores", () => {
     expect(ehExpressaoValida("10 *    / 2")).toBe(false);
   });
+
+  describe("Ciclo 4 — parênteses balanceados (ordem básica)", () => {
+    test("aceita expressões com parênteses corretamente balanceados", () => {
+      expect(ehExpressaoValida("(1+2)")).toBe(true);
+      expect(ehExpressaoValida("((12))")).toBe(true);
+      expect(ehExpressaoValida("(1)+(2)")).toBe(true);
+    });
+
+    test("rejeita quando falta fechar parênteses", () => {
+      expect(ehExpressaoValida("(1+2")).toBe(false);
+    });
+
+    test("rejeita quando fecha antes de abrir", () => {
+      expect(ehExpressaoValida(")1+2(")).toBe(false);
+      expect(ehExpressaoValida(")(")).toBe(false);
+    });
+
+    test("rejeita ordem impossível mesmo que quantidades fechem", () => {
+      expect(ehExpressaoValida("())(")).toBe(false);
+    });
+  });
+
+  
 });
